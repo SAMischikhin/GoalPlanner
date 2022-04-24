@@ -28,7 +28,7 @@ services:
   api:
     build:
       context: .
-      dockerfile: DockerFile
+      dockerfile: goalplanner/DockerFile
     environment:
       DB_HOST: db
     ports:
