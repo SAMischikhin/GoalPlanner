@@ -1,15 +1,15 @@
 version: '3.8'
 
 services:
-  front:
-    build:
-      context: .
-      dockerfile: todo-list-frontend-lesson-37/Dockerfile
-#    image: front_api
-    ports:
-      - "80:4200"
-    depends_on:
-      - api
+#  front:
+#    build:
+#      context: .
+#      dockerfile: todo-list-frontend-lesson-37/Dockerfile
+##    image: front_api
+#    ports:
+#      - "80:4200"
+#    depends_on:
+#      - api
 
   db:
     image: postgres:12.4-alpine
