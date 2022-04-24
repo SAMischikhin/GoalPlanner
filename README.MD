@@ -1,4 +1,4 @@
-GoalPlanner
+goalplanner
 
 python3.8, Django=4.0.1, Postgres
 

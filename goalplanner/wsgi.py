@@ -1,5 +1,5 @@
 """
-WSGI config for GoalPlanner project.
+WSGI config for goalplanner project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'GoalPlanner.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'goalplanner.settings')
 
 application = get_wsgi_application()
