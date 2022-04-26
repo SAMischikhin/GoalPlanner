@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   front:
-    image: samischikhin/skypro-todolist/goalplanner_front:latest
+    image: samischikhin/goalplanner_front:latest
     ports:
       - "80:4200"
     depends_on:
