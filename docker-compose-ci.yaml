@@ -19,8 +19,8 @@ services:
     restart: always
     ports:
       - "5432:5432"
-    env_file:
-      - goalplanner/.env
+#    env_file:
+#      - ./goalplanner/.env
 
   api:
     image: samischikhin/skypro-todolist:$GITHUB_REF_NAME-$GITHUB_RUN_ID
