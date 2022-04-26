@@ -2,17 +2,14 @@ version: '3.8'
 
 services:
   front:
-    build:
-      context: todolist_front
-      dockerfile: Dockerfile
-#    image: front_api
+    image: samischikhin/goalplanner_front:base
     ports:
       - "80:4200"
     depends_on:
       - api
 
   db:
-    image: postgres:12.4-alpine
+    image: samischikhin/postgres:12.4-alpine
     volumes:
       - postgres_data:/var/lib/postgresql/data
     environment:
@@ -26,9 +23,7 @@ services:
       - ./goalplanner/.env
 
   api:
-    build:
-      context: .
-      dockerfile: Dockerfile
+    image: samischikhin/skypro-todolist:$GITHUB_REF_NAME-$GITHUB_RUN_ID
     environment:
       DB_HOST: db
     ports:
