@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
+    'drf_spectacular',
     'core',
 ]
 
@@ -56,6 +58,9 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'goalplanner.urls'
+# CSRF_COOKIE_SECURE = True
+# CSRF_COOKIE_PATH = '/core'
+
 
 TEMPLATES = [
     {
@@ -134,4 +139,10 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+# REST_FRAMEWORK = {
+#     "DEFAULT_AUTHENTICATION_CLASSES": [
+#         'django.contrib.auth.authenticate']
+#     }
+
 AUTH_USER_MODEL = "core.User"
+

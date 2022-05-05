@@ -2,10 +2,10 @@ version: '3.8'
 
 services:
   front:
-    build:
-      context: todolist_front
-      dockerfile: Dockerfile
-#    image: front_api
+#    build:
+#      context: todolist_front
+#      dockerfile: Dockerfile
+    image: front_api
     ports:
       - "80:4200"
     depends_on:
