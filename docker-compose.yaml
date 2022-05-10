@@ -2,14 +2,17 @@ version: '3.8'
 
 services:
   front:
-#    build:
-#      context: todolist_front
-#      dockerfile: Dockerfile
-    image: front_api
+    build:
+      context: todolist_front
+      dockerfile: Dockerfile
+#    image: goalplanner_front
     ports:
       - "80:4200"
     depends_on:
       - api
+    volumes:
+      - .env:/app/.env #new
+#    network_mode: "host"
 
   db:
     image: postgres:12.4-alpine
@@ -20,10 +23,11 @@ services:
       POSTGRES_PASSWORD: postgres
       POSTGRES_DB: postgres
     restart: always
+#    hostname: 0.0.0.0
     ports:
-      - "5432:5432"
-    env_file:
-      - ./goalplanner/.env
+    - "5432:5432"
+#    volumes:
+#      - postgres_data:/var/lib/postgresql/data
 
   api:
     build:
@@ -36,8 +40,12 @@ services:
     depends_on:
       - db
     command: >
-      /bin/sh -c "python manage.py migrate
+      /bin/sh -c "python manage.py makemigrations
+      &&python manage.py migrate
       &&python manage.py runserver 0.0.0.0:8000"
+    volumes:
+      - .env:/app/.env #new
+#    network_mode: "host"
 
 volumes:
   postgres_data:

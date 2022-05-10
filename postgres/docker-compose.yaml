@@ -10,7 +10,9 @@ services:
       POSTGRES_PASSWORD: postgres
       POSTGRES_DB: postgres
     restart: always
+    hostname: 0.0.0.0
     ports:
     - "5432:5432"
+#    network_mode: "host"
 volumes:
   postgres_data:
