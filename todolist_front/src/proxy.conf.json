@@ -1,10 +1,6 @@
 {
-  "/api/core": {
-    "target": "http://51.250.106.88",
-    "secure": false
-  },
-  "/api/goals": {
-    "target": "http://51.250.106.88",
+  "/api": {
+    "target": "http://localhost:8000",
     "secure": false
   }
 }

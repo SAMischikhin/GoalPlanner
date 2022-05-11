@@ -13,6 +13,7 @@ import os
 from pathlib import Path
 from dotenv import load_dotenv
 
+
 load_dotenv()
 env_path = Path('.')/'.env'
 load_dotenv(dotenv_path=env_path)
@@ -38,6 +39,7 @@ ALLOWED_HOSTS = ["*"]
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
+    'corsheaders',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
@@ -50,6 +52,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -142,24 +145,25 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-REST_FRAMEWORK = {
-    "DEFAULT_AUTHENTICATION_CLASSES": [
-        'rest_framework.authentication.SessionAuthentication',
-        'rest_framework.authentication.BasicAuthentication']
-}
-
 # REST_FRAMEWORK = {
-#     'DEFAULT_AUTHENTICATION_CLASSES': [
-#         'rest_framework.authentication.TokenAuthentication',
-#     ]
+#     "DEFAULT_AUTHENTICATION_CLASSES": [
+#         'rest_framework.authentication.SessionAuthentication',
+#         'rest_framework.authentication.BasicAuthentication']
 # }
+
 
 AUTH_USER_MODEL = "core.User"
 
+# CORS
+CORS_ALLOW_ALL_ORIGINS = True
+
 # AUTHENTICATION_BACKENDS = (
-#     'social_core.backends.vk.VKOAuth2',          # бекенд авторизации через ВКонтакте
+#     'social_core.backends.vk.VKOAuth2',
 #     'django.contrib.auth.backends.ModelBackend',
 # )
-#
-# SOCIAL_AUTH_VK_OAUTH2_KEY = '8161779'
-# SOCIAL_AUTH_VK_OAUTH2_SECRET = 'zmbgu7EpYXKGk8bPOI5W'
+
+SOCIAL_AUTH_VK_OAUTH2_KEY = '8161779'
+SOCIAL_AUTH_VK_OAUTH2_SECRET = 'zmbgu7EpYXKGk8bPOI5W'
+
+# SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/logged-in/'
+# SOCIAL_AUTH_LOGIN_ERROR_URL = '/login-error/'
