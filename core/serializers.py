@@ -34,6 +34,12 @@ class UserRegistrationSerializer(UserCreateSerializer):
         fields = ["id", "username", "first_name", "last_name", "email", "password"]
 
 
+class UserModelSerializer(UserCreateSerializer):
+
+    class Meta:
+        model = User
+        fields = ["id", "username", "first_name", "last_name", "email", "password"]
+
 class RetrieveUpdateProfileSerializer(ModelSerializer):
     read_only_fields = ["id"]
     class Meta:

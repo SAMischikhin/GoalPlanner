@@ -1,5 +1,9 @@
 {
-  "/api": {
+  "/api/core": {
+    "target": "http://localhost:8000",
+    "secure": false
+  },
+  "/api/goals": {
     "target": "http://localhost:8000",
     "secure": false
   }

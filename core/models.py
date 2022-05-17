@@ -3,7 +3,7 @@ from django.db import models
 
 
 class User(AbstractUser):
-    # USERNAME_FIELD = "email"
-    # password = models.CharField(max_length=100)
-    pass
+    class Meta:
+        verbose_name = "Пользлватель"
+        verbose_name_plural = "Пользователи"
 

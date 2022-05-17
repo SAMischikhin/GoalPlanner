@@ -1,18 +1,14 @@
 version: '3.8'
 
 services:
-  front:
-    build:
-      context: todolist_front
-      dockerfile: Dockerfile
-#    image: goalplanner_front
+  frontend:
+    image: sermalenk/skypro-front:base
     ports:
-      - "80:4200"
+      - "80:80"
+    networks:
+      - app-network
     depends_on:
       - api
-    volumes:
-      - .env:/app/.env #new
-#    network_mode: "host"
 
   db:
     image: postgres
@@ -25,8 +21,8 @@ services:
     restart: always
     ports:
     - "5432:5432"
-#    volumes:
-#      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - db-network
 
   api:
     build:
@@ -44,7 +40,13 @@ services:
       &&python manage.py runserver 0.0.0.0:8000"
     volumes:
       - .env:/app/.env #new
-#    network_mode: "host"
+    networks:
+      - app-network
+      - db-network
 
 volumes:
   postgres_data:
+
+networks:
+  app-network:
+  db-network:
