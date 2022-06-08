@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   frontend:
-    image: sermalenk/skypro-front:base
+    image: sermalenk/skypro-front:lesson_36
     ports:
       - "80:80"
     networks:
@@ -35,8 +35,7 @@ services:
     depends_on:
       - db
     command: >
-      /bin/sh -c "python manage.py makemigrations
-      &&python manage.py migrate
+      /bin/sh -c "python manage.py migrate
       &&python manage.py runserver 0.0.0.0:8000"
     volumes:
       - .env:/app/.env #new
